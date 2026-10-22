@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота: UI елементи та їх призначення</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+        <header class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 md:p-8 mb-8 text-center sm:text-left">
+            <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full uppercase tracking-wider mb-3">
+                QC & QA Fundamentals / UI Elements
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                Лабораторна робота: UI елементи та їх призначення
+            </h1>
+            <p class="mt-2 text-slate-600 text-sm sm:text-base">
+                Демонстрація 10 основних користувацьких інтерфейсів (UI елементів) з інтерактивними прикладами та їх призначенням.
+            </p>
+        </header>
+        <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg text-sm opacity-0 transition-opacity duration-300 pointer-events-none z-50 flex items-center gap-2">
+            <span id="toast-message">Дія виконана!</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">1</span>
+                    <h2 class="text-lg font-bold text-slate-800">Radiobutton (Радіокнопка)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Дозволяє користувачеві обрати лише <strong>один варіант</strong> із декількох взаємовиключних опцій у групі.
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Приклад: Оберіть спосіб доставки</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 text-sm cursor-pointer">
+                            <input type="radio" name="delivery" value="Нова Пошта" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500" onchange="showToast('Обрано: Нова Пошта')">
+                            <span>Нова Пошта</span>
+                        </label>
+                        <label class="flex items-center gap-2 text-sm cursor-pointer">
+                            <input type="radio" name="delivery" value="Укрпошта" class="w-4 h-4 text-blue-600 focus:ring-blue-500" onchange="showToast('Обрано: Укрпошта')">
+                            <span>Укрпошта</span>
+                        </label>
+                        <label class="flex items-center gap-2 text-sm cursor-pointer">
+                            <input type="radio" name="delivery" value="Кур'єр" class="w-4 h-4 text-blue-600 focus:ring-blue-500" onchange="showToast('Обрано: Кур\'єр')">
+                            <span>Кур'єрська доставка</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">2</span>
+                    <h2 class="text-lg font-bold text-slate-800">Checkbox (Прапорець / Чекбокс)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Використовується для вибору <strong>одного або кількох варіантів</strong> незалежно один від одного, або для ввімкнення/вимкнення конкретного стану (on/off).
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Приклад: Додаткові опції</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 text-sm cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500" onchange="showToast('Подарункова упаковка: ' + (this.checked ? 'так' : 'ні'))">
+                            <span>Подарункова упаковка</span>
+                        </label>
+                        <label class="flex items-center gap-2 text-sm cursor-pointer">
+                            <input type="checkbox" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500" checked onchange="showToast('SMS-сповіщення: ' + (this.checked ? 'так' : 'ні'))">
+                            <span>SMS-сповіщення про статус</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">3</span>
+                    <h2 class="text-lg font-bold text-slate-800">Text input (Текстове поле)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Служить для введення користувачем <strong>однорядкового тексту</strong> (імені, email, пошукового запиту тощо).
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                    <label for="demo-input" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Приклад: Введіть ваше ім'я</label>
+                    <input type="text" id="demo-input" placeholder="Наприклад: Тарас Шевченко" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" oninput="document.getElementById('input-preview').innerText = this.value || '...' ">
+                    <p class="mt-2 text-xs text-slate-500">Введено: <span id="input-preview" class="font-medium text-slate-700">...</span></p>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">4</span>
+                    <h2 class="text-lg font-bold text-slate-800">Tabs (Вкладки)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Дозволяє <strong>перемикатися між різними розділами</strong> контенту в межах одного й того ж екранного простору, економлячи місце.
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                    <div class="flex border-b border-slate-200 mb-3 gap-2">
+                        <button onclick="switchTab('tab1')" id="tab1-btn" class="tab-btn pb-2 text-xs font-semibold text-blue-600 border-b-2 border-blue-600 transition">Опис</button>
+                        <button onclick="switchTab('tab2')" id="tab2-btn" class="tab-btn pb-2 text-xs font-semibold text-slate-500 border-b-2 border-transparent hover:text-slate-700 transition">Характеристики</button>
+                    </div>
+                    <div id="tab1-content" class="text-xs text-slate-600 min-h-[40px]">
+                        Це картка товару. Тут відображається загальний опис та основна інформація.
+                    </div>
+                    <div id="tab2-content" class="text-xs text-slate-600 hidden min-h-[40px]">
+                        Матеріал: Пластик/Метал<br>
+                        Вага: 250г<br>
+                        Гарантія: 12 місяців
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">5</span>
+                    <h2 class="text-lg font-bold text-slate-800">Button (Кнопка)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Використовується для <strong>ініціації дії</strong> при натисканні (відправка форми, відкриття модального вікна, збереження даних тощо).
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 flex flex-wrap gap-2 items-center">
+                    <button onclick="showToast('Кнопку «Надіслати» натиснуто!')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs rounded-lg transition shadow-sm active:scale-95">
+                        Надіслати
+                    </button>
+                    <button onclick="showToast('Дію скасовано')" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium text-xs rounded-lg transition active:scale-95">
+                        Скасувати
+                    </button>
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">6</span>
+                    <h2 class="text-lg font-bold text-slate-800">Text label (Текстова мітка)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Для відображення <strong>статичного тексту або пояснювального напису</strong> поруч із полем введення або іншим контролом для забезпечення зрозумілості.
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                    <label for="example-email" class="block text-xs font-semibold text-slate-700 mb-1">
+                        Електронна пошта <span class="text-red-500">* (це Text label)</span>
+                    </label>
+                    <input type="email" id="example-email" placeholder="example@mail.com" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">7</span>
+                    <h2 class="text-lg font-bold text-slate-800">Link (Гіперпосилання)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Забезпечує <strong>навігацію</strong> на іншу сторінку, інший розділ документа або зовнішній веб-ресурс.
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                    <p class="text-xs text-slate-600">
+                        Перейдіть на 
+                        <a href="https://uk.wikipedia.org/wiki/%D0%86%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81_%D0%BA%D0%BE%D1%80%D0%B8%D1%81%D1%82%D1%83%D0%B2%D0%B0%D1%87%D0%B0" target="_blank" class="text-blue-600 hover:text-blue-800 underline font-medium inline-flex items-center gap-1">
+                            Вікіпедію (Інтерфейс користувача)
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a> 
+                        щоб дізнатися більше.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">8</span>
+                    <h2 class="text-lg font-bold text-slate-800">Tooltip (Спливаюча підказка)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Відображає <strong>додаткову довідкову інформацію</strong> при наведенні курсору миші на елемент (або при фокусі).
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 flex justify-start">
+                    <div class="relative group inline-block">
+                        <button class="px-3 py-1.5 bg-slate-800 text-white text-xs font-medium rounded-lg hover:bg-slate-700 transition">
+                            Наведіть на мене курсор
+                        </button>
+                        <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-48 p-2 bg-slate-900 text-white text-[11px] rounded shadow-lg text-center z-10">
+                            Це підказка з додатковою інформацією!
+                            <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow md:col-span-2">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">9</span>
+                    <h2 class="text-lg font-bold text-slate-800">Dropdown list (Випадаючий список)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Дозволяє користувачеві обрати <strong>одне значення з розгортаємого списку</strong>, заощаджуючи простір екрану.
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-300 max-w-xs">
+                    <label for="city-select" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Оберіть місто:</label>
+                    <select id="city-select" onchange="showToast('Обране місто: ' + this.value)" class="w-full px-3 py-2 bg-white border border-slate-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="Київ">Київ</option>
+                        <option value="Львів">Львів</option>
+                        <option value="Одеса">Одеса</option>
+                        <option value="Харків">Харків</option>
+                        <option value="Дніпро">Дніпро</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow md:col-span-2">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-bold text-sm">10</span>
+                    <h2 class="text-lg font-bold text-slate-800">Data grid (Таблиця даних)</h2>
+                </div>
+                <div class="mb-4 text-xs bg-slate-100 text-slate-700 p-3 rounded-lg border border-slate-200">
+                    <strong>Призначення:</strong> Відображення <strong>структурованих даних у вигляді рядків та стовпчиків</strong> із можливістю зручного перегляду, а часто й сортування або фільтрації.
+                </div>
+                <div class="overflow-x-auto rounded-xl border border-slate-200">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                            <tr>
+                                <th class="p-3 font-semibold">ID</th>
+                                <th class="p-3 font-semibold">Назва UI елемента</th>
+                                <th class="p-3 font-semibold">Тип взаємодії</th>
+                                <th class="p-3 font-semibold">Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-medium text-slate-500">#01</td>
+                                <td class="p-3 font-semibold text-slate-800">Radiobutton</td>
+                                <td class="p-3 text-slate-600">Клік (одиночний вибір)</td>
+                                <td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Активний</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-medium text-slate-500">#02</td>
+                                <td class="p-3 font-semibold text-slate-800">Checkbox</td>
+                                <td class="p-3 text-slate-600">Клік (множинний вибір)</td>
+                                <td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Активний</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-medium text-slate-500">#03</td>
+                                <td class="p-3 font-semibold text-slate-800">Button</td>
+                                <td class="p-3 text-slate-600">Натискання (Action)</td>
+                                <td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Активний</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <footer class="mt-8 text-center text-xs text-slate-500">
+            Виконано у рамках лабораторної роботи з QC/QA • 2026
+        </footer>
+
+    </div>
+    <script>
+        function switchTab(tabId) {
+            document.getElementById('tab1-content').classList.add('hidden');
+            document.getElementById('tab2-content').classList.add('hidden');
+            
+            document.getElementById('tab1-btn').className = 'tab-btn pb-2 text-xs font-semibold text-slate-500 border-b-2 border-transparent hover:text-slate-700 transition';
+            document.getElementById('tab2-btn').className = 'tab-btn pb-2 text-xs font-semibold text-slate-500 border-b-2 border-transparent hover:text-slate-700 transition';
+
+            document.getElementById(tabId + '-content').classList.remove('hidden');
+            document.getElementById(tabId + '-btn').className = 'tab-btn pb-2 text-xs font-semibold text-blue-600 border-b-2 border-blue-600 transition';
+        }
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.innerText = message;
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
